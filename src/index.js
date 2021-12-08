@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {getHeroeById} from "./Bases/data/heroes";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const promesa = new Promise((resolve, reject) => {
+    setTimeout(()=>{
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        const p1 = getHeroeById(2);
+       // console.log(heroes);
+       resolve(p1);
+        //reject('no se pudo importar');
+    },2000)
+});
+promesa.then((heroes) =>{
+    console.log('Then de heroe promesa', heroes)
+})
+.catch(err => console.warn(err));
